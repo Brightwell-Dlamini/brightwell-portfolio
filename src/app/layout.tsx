@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Eswatini",
     "Next.js",
     "TypeScript",
-    "Wiggle Digital",
+    
   ],
   authors: [{ name: "Brightwell Dlamini" }],
   openGraph: {
