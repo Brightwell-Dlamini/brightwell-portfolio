@@ -17,7 +17,7 @@ const projects = [
     description:
       "End-to-end rental and property platform with role-based access (landlord, broker, agent, seeker, admin), phone OTP verification, document verification workflows, Mapbox-powered search, listing approvals, photo storage and Progressive Web App support. Built for the local market context.",
     stack: ["Next.js", "TypeScript", "Supabase", "Mapbox", "React Query", "Twilio"],
-    live: null,
+    live: "https://ekhayalistings.vercel.app",
     repo: "https://github.com/Brightwell-Dlamini/swazirent-main",
     highlight: "Full-Stack · Local market product",
   },
@@ -26,8 +26,8 @@ const projects = [
     tagline: "Modern CMS for digital agencies & content teams",
     description:
       "Purpose-built content management system demonstrating clean content modelling, role-based editorial workflows, media library, draft/publish states and a polished admin interface. Designed to showcase CMS specialist capabilities alongside strong UX and full-stack implementation.",
-    stack: ["Next.js", "TypeScript", "Supabase", "Tailwind", "Server Actions"],
-    live: null,
+    stack: ["Next.js", "TypeScript", "Tailwind", "Server Actions"],
+    live: "https://siya-cms.vercel.app",
     repo: "https://github.com/Brightwell-Dlamini/forge-cms",
     highlight: "CMS Specialist · Admin UX",
   },
@@ -36,8 +36,8 @@ const projects = [
     tagline: "E-commerce & local business platform",
     description:
       "Full-stack storefront and admin system oriented toward Eswatini SMEs. Product catalogue, inventory, order management, customer accounts and a responsive shopping experience. Includes a practical content/product CMS layer that non-technical users can operate.",
-    stack: ["Next.js", "TypeScript", "Supabase", "Tailwind", "Stripe-ready patterns"],
-    live: null,
+    stack: ["Next.js", "TypeScript", "Tailwind", "Commerce patterns"],
+    live: "https://siya-market.vercel.app",
     repo: "https://github.com/Brightwell-Dlamini/localmarket",
     highlight: "Full-Stack · E-commerce CMS",
   },
