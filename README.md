@@ -4,17 +4,12 @@ Modern professional portfolio for **Full-Stack Developer**, **UX/UI Designer** a
 
 Built specifically with the Wiggle Digital Eswatini opportunity in mind.
 
-## Live
-
-Deploy this repository to Vercel (recommended). After connecting the GitHub repo, Vercel will detect Next.js automatically.
-
 ## Stack
 
 - Next.js 15 (App Router)
 - React 19
 - TypeScript
 - Tailwind CSS v4
-- Framer Motion (optional enhancements)
 - next-themes
 
 ## Local development
@@ -28,16 +23,16 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Projects featured
 
-1. **SiyaTrades** — Trading journal & discipline system  
-2. **SwaziRent (Ekhaya)** — Property marketplace for Eswatini  
-3. **ForgeCMS** — Agency-oriented content management system  
-4. **LocalMarket** — E-commerce + local business platform
+| Project | Live demo | Repository |
+|---------|-----------|------------|
+| **SiyaTrades** | [siya-trades.vercel.app](https://siya-trades.vercel.app) | [GitHub](https://github.com/Brightwell-Dlamini/SiyaTrades) |
+| **SwaziRent (Ekhaya)** | [ekhayalistings.vercel.app](https://ekhayalistings.vercel.app) | [GitHub](https://github.com/Brightwell-Dlamini/swazirent-main) |
+| **ForgeCMS** | [siya-cms.vercel.app](https://siya-cms.vercel.app) | [GitHub](https://github.com/Brightwell-Dlamini/forge-cms) |
+| **LocalMarket** | [siya-market.vercel.app](https://siya-market.vercel.app) | [GitHub](https://github.com/Brightwell-Dlamini/localmarket) |
 
 ## Deploy on Vercel
 
-1. Push this repository to GitHub (already on `main`).
-2. Import the project in the Vercel dashboard.
-3. Deploy — no special environment variables required for the static portfolio.
+Import this repository in the Vercel dashboard. No environment variables required.
 
 ---
 
