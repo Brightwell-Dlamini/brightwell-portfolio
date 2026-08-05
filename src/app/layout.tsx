@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Brightwell Dlamini | Full-Stack Developer · UX/UI Designer · CMS Specialist",
+  title: "Brightwell Dlamini | Full-Stack Developer · UX/UI · CMS",
   description:
-    "Professional portfolio of Brightwell Dlamini — Full-Stack Developer, UX/UI Designer and CMS Specialist based in Eswatini. Building modern digital products with Next.js, TypeScript and thoughtful design.",
+    "Brightwell Dlamini — full-stack developer, UX/UI designer and CMS specialist from Mankayane, Eswatini. 5+ years building production web apps with Next.js, TypeScript and thoughtful design.",
   keywords: [
     "Full-Stack Developer",
     "UX/UI Designer",
@@ -20,13 +19,13 @@ export const metadata: Metadata = {
     "Eswatini",
     "Next.js",
     "TypeScript",
-    
+    "Brightwell Dlamini",
   ],
   authors: [{ name: "Brightwell Dlamini" }],
   openGraph: {
     title: "Brightwell Dlamini | Full-Stack · UX/UI · CMS",
     description:
-      "Portfolio showcasing production-ready full-stack applications, thoughtful UX and CMS expertise.",
+      "Portfolio of a full-stack developer from Eswatini — production apps, CMS systems and clean UX.",
     type: "website",
     locale: "en_SZ",
   },
@@ -34,15 +33,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={`${inter.variable} font-sans bg-slate-950 text-slate-100 antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

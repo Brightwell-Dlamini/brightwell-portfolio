@@ -1,6 +1,4 @@
-"use client";
-
-import { ArrowRight, Github, Mail } from "lucide-react";
+import { ArrowRight, Download, Github, Mail, Phone } from "lucide-react";
 
 export function Hero() {
   return (
@@ -14,7 +12,7 @@ export function Hero() {
         <div className="max-w-3xl">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-700/80 bg-slate-900/60 px-3 py-1 text-xs font-medium text-brand-300">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Available for opportunities · Eswatini
+            Open to opportunities · Mankayane, Eswatini
           </p>
 
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -26,44 +24,57 @@ export function Hero() {
           </p>
 
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
-            I design and build production-grade web applications that combine clean architecture,
-            thoughtful user experience and maintainable content systems. Currently focused on
-            Next.js, TypeScript, Supabase and modern design systems — ready to contribute at
-            Wiggle Digital Eswatini.
+            5+ years writing software — from a first encounter with a computer at university to
+            shipping production apps used by real people. I build systems that are technically
+            sound, scalable, and genuinely pleasant to use.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
               href="#projects"
               className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 hover:bg-brand-500 transition-colors"
             >
-              View Projects
+              View projects
               <ArrowRight size={16} />
             </a>
             <a
-              href="#contact"
+              href="/resume"
               className="inline-flex items-center gap-2 rounded-full border border-slate-600 bg-slate-900/50 px-6 py-3 text-sm font-semibold text-slate-200 hover:border-slate-500 hover:bg-slate-800 transition-colors"
             >
-              Get in Touch
+              <Download size={16} />
+              Download CV
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-medium text-slate-300 hover:text-white hover:border-slate-500 transition-colors"
+            >
+              Contact
             </a>
           </div>
 
-          <div className="mt-12 flex items-center gap-5">
+          <div className="mt-12 flex flex-wrap items-center gap-5 text-sm text-slate-400">
             <a
               href="https://github.com/Brightwell-Dlamini"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors"
-              aria-label="GitHub"
+              className="inline-flex items-center gap-2 hover:text-white transition-colors"
             >
-              <Github size={22} />
+              <Github size={18} />
+              GitHub
             </a>
             <a
-              href="mailto:admin@wiggledigital.co.sz"
-              className="text-slate-400 hover:text-white transition-colors"
-              aria-label="Email"
+              href="mailto:dlaminibrightwell@gmail.com"
+              className="inline-flex items-center gap-2 hover:text-white transition-colors"
             >
-              <Mail size={22} />
+              <Mail size={18} />
+              dlaminibrightwell@gmail.com
+            </a>
+            <a
+              href="tel:+26876365539"
+              className="inline-flex items-center gap-2 hover:text-white transition-colors"
+            >
+              <Phone size={18} />
+              +268 7636 5539
             </a>
           </div>
         </div>
