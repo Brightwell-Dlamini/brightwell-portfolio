@@ -1,4 +1,4 @@
-import { Mail, Github, MapPin } from "lucide-react";
+import { Mail, Phone, Github, MapPin, Download } from "lucide-react";
 
 export function Contact() {
   return (
@@ -10,42 +10,57 @@ export function Contact() {
               Contact
             </h2>
             <p className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Let us build something excellent together
+              Let&apos;s talk
             </p>
             <p className="mt-4 text-slate-400 leading-relaxed">
-              I am actively seeking the UX/UI Designer, Full-Stack Developer or CMS Specialist
-              role at Wiggle Digital Eswatini. The portfolio and source code are ready for review.
-              Applications close 7 August 2026 — I would welcome the opportunity to discuss how I
-              can contribute.
+              Open to full-time roles, contract work and interesting product problems. Reach me
+              directly by email or phone — I respond as soon as I can.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
               <a
-                href="mailto:admin@wiggledigital.co.sz?subject=Application%20-%20Brightwell%20Dlamini%20-%20Full-Stack%20%2F%20UX%2FUI%20%2F%20CMS"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-500 transition-colors"
+                href="mailto:dlaminibrightwell@gmail.com"
+                className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-950/50 px-4 py-3.5 text-sm text-slate-200 hover:border-brand-500/50 hover:bg-slate-900 transition-colors"
               >
-                <Mail size={16} />
-                Email Application
+                <Mail size={18} className="text-brand-400 shrink-0" />
+                <span className="truncate">dlaminibrightwell@gmail.com</span>
+              </a>
+              <a
+                href="tel:+26876365539"
+                className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-950/50 px-4 py-3.5 text-sm text-slate-200 hover:border-brand-500/50 hover:bg-slate-900 transition-colors"
+              >
+                <Phone size={18} className="text-brand-400 shrink-0" />
+                <span>+268 7636 5539</span>
+              </a>
+              <a
+                href="tel:+26879808742"
+                className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-950/50 px-4 py-3.5 text-sm text-slate-200 hover:border-brand-500/50 hover:bg-slate-900 transition-colors"
+              >
+                <Phone size={18} className="text-brand-400 shrink-0" />
+                <span>+268 7980 8742</span>
               </a>
               <a
                 href="https://github.com/Brightwell-Dlamini"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:bg-slate-800 transition-colors"
+                className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-950/50 px-4 py-3.5 text-sm text-slate-200 hover:border-brand-500/50 hover:bg-slate-900 transition-colors"
               >
-                <Github size={16} />
-                View GitHub
+                <Github size={18} className="text-brand-400 shrink-0" />
+                <span>github.com/Brightwell-Dlamini</span>
               </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-6 text-sm text-slate-400">
-              <span className="inline-flex items-center gap-2">
-                <MapPin size={15} className="text-brand-400" />
-                Eswatini
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Github size={15} className="text-brand-400" />
-                github.com/Brightwell-Dlamini
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="/resume"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-500 transition-colors"
+              >
+                <Download size={16} />
+                View / print CV
+              </a>
+              <span className="inline-flex items-center gap-2 text-sm text-slate-500">
+                <MapPin size={15} />
+                Mankayane, Eswatini
               </span>
             </div>
           </div>

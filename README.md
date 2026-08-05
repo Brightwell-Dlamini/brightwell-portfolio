@@ -1,16 +1,18 @@
 # Brightwell Dlamini — Portfolio
 
-Modern professional portfolio for **Full-Stack Developer**, **UX/UI Designer** and **CMS Specialist** roles.
-
-Built specifically with the Wiggle Digital Eswatini opportunity in mind.
+Personal portfolio: Full-Stack Developer, UX/UI Designer, CMS Specialist · Mankayane, Eswatini.
 
 ## Stack
 
 - Next.js 15 (App Router)
-- React 19
 - TypeScript
 - Tailwind CSS v4
-- next-themes
+
+## Features
+
+- About / story, experience timeline, skills, live projects
+- Real contact (email + phone)
+- Printable CV at `/resume`
 
 ## Local development
 
@@ -19,21 +21,17 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
 ## Projects featured
 
-| Project | Live demo | Repository |
-|---------|-----------|------------|
-| **SiyaTrades** | [siya-trades.vercel.app](https://siya-trades.vercel.app) | [GitHub](https://github.com/Brightwell-Dlamini/SiyaTrades) |
-| **SwaziRent (Ekhaya)** | [ekhayalistings.vercel.app](https://ekhayalistings.vercel.app) | [GitHub](https://github.com/Brightwell-Dlamini/swazirent-main) |
-| **ForgeCMS** | [siya-cms.vercel.app](https://siya-cms.vercel.app) | [GitHub](https://github.com/Brightwell-Dlamini/forge-cms) |
-| **LocalMarket** | [siya-market.vercel.app](https://siya-market.vercel.app) | [GitHub](https://github.com/Brightwell-Dlamini/localmarket) |
+| Project | Live |
+|---------|------|
+| SiyaTrades | https://siya-trades.vercel.app |
+| SwaziRent (Ekhaya) | https://ekhayalistings.vercel.app |
+| ForgeCMS | https://siya-cms.vercel.app |
+| LocalMarket | https://siya-market.vercel.app |
 
-## Deploy on Vercel
+## Contact
 
-Import this repository in the Vercel dashboard. No environment variables required.
-
----
-
-Brightwell Dlamini · Eswatini · github.com/Brightwell-Dlamini
+- dlaminibrightwell@gmail.com
+- +268 7636 5539 / +268 7980 8742
+- https://github.com/Brightwell-Dlamini

@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const links = [
   { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -17,8 +17,16 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20);
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -32,14 +40,11 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <a
-          href="#"
-          className="text-lg font-semibold tracking-tight text-white hover:text-brand-400 transition-colors"
-        >
+        <a href="#" className="text-lg font-semibold tracking-tight text-white hover:text-brand-400 transition-colors">
           Brightwell<span className="text-brand-400">.</span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {links.map((link) => (
             <a
               key={link.href}
@@ -50,10 +55,11 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
-            className="rounded-full bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-500 transition-colors"
+            href="/resume"
+            className="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-500 transition-colors"
           >
-            Hire Me
+            <Download size={14} />
+            CV
           </a>
         </nav>
 
@@ -80,11 +86,11 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/resume"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-lg bg-brand-600 px-3 py-2.5 text-center text-sm font-medium text-white"
             >
-              Hire Me
+              Download CV
             </a>
           </nav>
         </div>
