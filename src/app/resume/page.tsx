@@ -131,8 +131,7 @@ export default function ResumePage() {
 
         <Section title="Personal">
           <p className="text-sm text-slate-700">
-            Born 1998 · From Mankayane, Eswatini. Journey: challenge → obsession — building bridges
-            with code.
+            From Mankayane, Eswatini. Journey: challenge → obsession — building bridges with code.
           </p>
         </Section>
       </article>
