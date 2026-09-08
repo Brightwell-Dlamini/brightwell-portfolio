@@ -14,6 +14,7 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Preloader } from "@/components/Preloader";
 import { TechMarquee } from "@/components/TechMarquee";
+import { VelocityBar } from "@/components/VelocityBar";
 
 export default function Home() {
   const [ready, setReady] = useState(false);
@@ -24,6 +25,7 @@ export default function Home() {
       <MotionConfig reducedMotion="user" transition={{ type: "spring", stiffness: 280, damping: 28 }}>
         <CustomCursor />
         <ScrollProgress />
+        <VelocityBar />
         <Preloader onDone={onDone} />
 
         <AnimatePresence mode="wait">
@@ -33,7 +35,7 @@ export default function Home() {
               className="min-h-screen relative"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <Navbar />
               <Hero />
