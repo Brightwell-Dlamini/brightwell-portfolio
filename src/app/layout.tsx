@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "Next.js",
     "TypeScript",
     "Brightwell Dlamini",
+    "Framer Motion",
   ],
   authors: [{ name: "Brightwell Dlamini" }],
   openGraph: {
@@ -35,8 +36,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans bg-slate-950 text-slate-100 antialiased`}>
+    <html lang="en" className="dark">
+      <body className={`${inter.variable} font-sans bg-[#030712] text-slate-100 antialiased`}>
         {children}
       </body>
     </html>
