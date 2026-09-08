@@ -7,9 +7,12 @@ import {
   useTransform,
   useMotionValue,
   useSpring,
+  useTime,
 } from "framer-motion";
 import { ArrowRight, Download, Github, Mail, Phone } from "lucide-react";
-import { staggerContainer, fadeUp, springSoft } from "@/lib/animations";
+import { SplitText } from "@/components/SplitText";
+import { MagneticButton } from "@/components/MagneticButton";
+import { staggerContainer, fadeUp } from "@/lib/animations";
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,145 +21,92 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const yBlob1 = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const yBlob2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const opacityContent = useTransform(scrollYProgress, [0, 0.6], [1, 0.3]);
+  const yContent = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  const opacityContent = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const scaleContent = useTransform(scrollYProgress, [0, 0.7], [1, 0.92]);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-  const orb1X = useTransform(springX, [-1, 1], [-18, 18]);
-  const orb1Y = useTransform(springY, [-1, 1], [-12, 12]);
-  const orb2X = useTransform(springX, [-1, 1], [14, -14]);
-  const orb2Y = useTransform(springY, [-1, 1], [10, -10]);
+  const springX = useSpring(mouseX, { stiffness: 40, damping: 18 });
+  const springY = useSpring(mouseY, { stiffness: 40, damping: 18 });
+  const orb1X = useTransform(springX, [-1, 1], [-30, 30]);
+  const orb1Y = useTransform(springY, [-1, 1], [-20, 20]);
+  const orb2X = useTransform(springX, [-1, 1], [24, -24]);
+
+  const t = useTime();
+  const floatY = useTransform(t, (v) => Math.sin(v / 900) * 18);
+  const floatY2 = useTransform(t, (v) => Math.cos(v / 1100) * 22);
 
   const onMouseMove = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    mouseX.set((clientX / innerWidth) * 2 - 1);
-    mouseY.set((clientY / innerHeight) * 2 - 1);
+    mouseX.set((e.clientX / window.innerWidth) * 2 - 1);
+    mouseY.set((e.clientY / window.innerHeight) * 2 - 1);
   };
 
   return (
     <section
       ref={sectionRef}
       onMouseMove={onMouseMove}
-      className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28 min-h-[90vh] flex items-center mesh-bg"
+      className="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32 min-h-[100vh] flex items-center mesh-bg"
     >
-      <motion.div
-        className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[700px] -translate-x-1/2 rounded-full bg-violet-600/25 blur-[120px] will-change-transform"
-        style={{ y: yBlob1, x: orb1X }}
-        animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.7, 0.5] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="pointer-events-none absolute top-1/3 right-0 h-72 w-72 rounded-full bg-cyan-500/15 blur-[100px] will-change-transform"
-        style={{ y: yBlob2, x: orb2X, translateY: orb1Y }}
-        animate={{ scale: [1, 1.12, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
-      <motion.div
-        className="pointer-events-none absolute bottom-20 left-10 h-56 w-56 rounded-full bg-fuchsia-500/15 blur-[90px] will-change-transform"
-        style={{ x: orb2X, y: orb2Y }}
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
+      <motion.div className="pointer-events-none absolute -top-40 left-[20%] h-[480px] w-[480px] rounded-full bg-violet-600/30 blur-[110px] will-change-transform" style={{ x: orb1X, y: floatY }} />
+      <motion.div className="pointer-events-none absolute top-[30%] right-[-5%] h-[360px] w-[360px] rounded-full bg-cyan-500/20 blur-[100px] will-change-transform" style={{ x: orb2X, y: floatY2 }} />
+      <motion.div className="pointer-events-none absolute bottom-[10%] left-[10%] h-[280px] w-[280px] rounded-full bg-fuchsia-500/20 blur-[90px] will-change-transform" style={{ x: orb2X, y: orb1Y }} animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
 
-      <motion.div
-        className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full"
-        style={{ opacity: opacityContent }}
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="max-w-3xl">
-          <motion.p
-            variants={fadeUp}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 glass px-3.5 py-1.5 text-xs font-medium text-violet-300"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Open to opportunities · Mankayane, Eswatini
-          </motion.p>
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)", backgroundSize: "64px 64px", maskImage: "radial-gradient(ellipse at center, black 20%, transparent 70%)" }} />
 
-          <motion.h1
-            variants={fadeUp}
-            className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl"
-          >
-            Brightwell{" "}
-            <span className="gradient-text">Dlamini</span>
-          </motion.h1>
+      <motion.div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full" style={{ y: yContent, opacity: opacityContent, scale: scaleContent }}>
+        <motion.div variants={staggerContainer} initial="hidden" animate="visible">
+          <motion.div variants={fadeUp} className="mb-7">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 glass px-4 py-1.5 text-[11px] font-semibold tracking-wider uppercase text-violet-300">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              Available for work · Eswatini
+            </span>
+          </motion.div>
 
-          <motion.p
-            variants={fadeUp}
-            className="mt-5 text-xl font-medium text-slate-300 sm:text-2xl"
-          >
+          <div className="overflow-hidden">
+            <SplitText text="Brightwell" as="h1" mode="chars" className="block text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight text-white leading-[1.05]" />
+          </div>
+          <div className="overflow-hidden mt-1">
+            <SplitText text="Dlamini" as="h1" mode="chars" delay={0.35} className="block text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight gradient-text leading-[1.05]" />
+          </div>
+
+          <motion.p variants={fadeUp} className="mt-6 text-lg sm:text-xl text-slate-300 max-w-xl font-medium">
             Full-Stack Developer · UX/UI Designer · CMS Specialist
           </motion.p>
 
-          <motion.p
-            variants={fadeUp}
-            className="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg"
-          >
-            5+ years writing software — from a first encounter with a computer at university to
-            shipping production apps used by real people. I build systems that are technically
-            sound, scalable, and genuinely pleasant to use.
+          <motion.p variants={fadeUp} className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+            5+ years shipping production software — from a first computer at university to systems used by real people. I design and build products that are technically rigorous and genuinely pleasant to use.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-3">
-            <motion.a
-              href="#projects"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-violet-500/30"
-              whileHover={{ scale: 1.05, boxShadow: "0 16px 40px -10px rgba(139,92,246,0.55)" }}
-              whileTap={{ scale: 0.96 }}
-              transition={springSoft}
-            >
-              View projects
-              <ArrowRight size={16} />
-            </motion.a>
-            <motion.a
-              href="/resume"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 glass px-6 py-3.5 text-sm font-semibold text-slate-100"
-              whileHover={{ scale: 1.04, borderColor: "rgba(167,139,250,0.5)" }}
-              whileTap={{ scale: 0.96 }}
-            >
-              <Download size={16} />
-              Download CV
-            </motion.a>
-            <motion.a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-3.5 text-sm font-medium text-slate-300"
-              whileHover={{ color: "#fff", x: 2 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              Contact
-            </motion.a>
+          <motion.div variants={fadeUp} className="mt-11 flex flex-wrap items-center gap-4">
+            <MagneticButton href="#projects" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_0_40px_-8px_rgba(139,92,246,0.55)]">
+              View projects <ArrowRight size={16} />
+            </MagneticButton>
+            <MagneticButton href="/resume" className="inline-flex items-center gap-2 rounded-full border border-white/15 glass px-7 py-3.5 text-sm font-semibold text-slate-100">
+              <Download size={16} /> Download CV
+            </MagneticButton>
           </motion.div>
 
-          <motion.div
-            variants={fadeUp}
-            className="mt-12 flex flex-wrap items-center gap-6 text-sm text-slate-400"
-          >
+          <motion.div variants={fadeUp} className="mt-14 flex flex-wrap items-center gap-7 text-sm text-slate-400">
             {[
               { href: "https://github.com/Brightwell-Dlamini", icon: Github, label: "GitHub" },
-              { href: "mailto:dlaminibrightwell@gmail.com", icon: Mail, label: "dlaminibrightwell@gmail.com" },
+              { href: "mailto:dlaminibrightwell@gmail.com", icon: Mail, label: "Email" },
               { href: "tel:+26876365539", icon: Phone, label: "+268 7636 5539" },
             ].map((item) => (
-              <motion.a
-                key={item.href}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="inline-flex items-center gap-2"
-                whileHover={{ color: "#fff", y: -2 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <item.icon size={18} />
-                {item.label}
-              </motion.a>
+              <MagneticButton key={item.href} href={item.href} strength={0.2} className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <item.icon size={17} /> {item.label}
+              </MagneticButton>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
+      </motion.div>
+
+      <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}>
+        <span className="text-[10px] uppercase tracking-widest text-slate-500">Scroll</span>
+        <motion.div className="h-10 w-[1px] bg-gradient-to-b from-violet-400 to-transparent origin-top" animate={{ scaleY: [0.4, 1, 0.4], opacity: [0.4, 1, 0.4] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }} />
       </motion.div>
     </section>
   );
