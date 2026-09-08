@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { MotionConfig } from "framer-motion";
+import { useState, useCallback } from "react";
+import { MotionConfig, LazyMotion, domAnimation, AnimatePresence, motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -11,33 +11,43 @@ import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { LoadingSkeleton } from "@/components/LoadingSkeleton";
+import { CustomCursor } from "@/components/CustomCursor";
+import { Preloader } from "@/components/Preloader";
+import { TechMarquee } from "@/components/TechMarquee";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 900);
-    return () => clearTimeout(t);
-  }, []);
-
-  if (loading) {
-    return <LoadingSkeleton />;
-  }
+  const [ready, setReady] = useState(false);
+  const onDone = useCallback(() => setReady(true), []);
 
   return (
-    <MotionConfig reducedMotion="user">
-      <main className="min-h-screen relative">
+    <LazyMotion features={domAnimation}>
+      <MotionConfig reducedMotion="user" transition={{ type: "spring", stiffness: 280, damping: 28 }}>
+        <CustomCursor />
         <ScrollProgress />
-        <Navbar />
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Testimonials />
-        <Contact />
-        <Footer />
-      </main>
-    </MotionConfig>
+        <Preloader onDone={onDone} />
+
+        <AnimatePresence mode="wait">
+          {ready && (
+            <motion.main
+              key="main"
+              className="min-h-screen relative"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Navbar />
+              <Hero />
+              <TechMarquee />
+              <About />
+              <Skills />
+              <Projects />
+              <Testimonials />
+              <Contact />
+              <Footer />
+            </motion.main>
+          )}
+        </AnimatePresence>
+      </MotionConfig>
+    </LazyMotion>
   );
 }
