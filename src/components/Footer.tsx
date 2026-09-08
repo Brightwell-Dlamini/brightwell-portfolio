@@ -40,13 +40,14 @@ export function Footer() {
                 aria-label={s.label}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 glass text-slate-400"
                 whileHover={{
-                  scale: 1.12,
+                  scale: 1.15,
                   color: "#fff",
                   borderColor: "rgba(167, 139, 250, 0.5)",
-                  boxShadow: "0 0 20px -4px rgba(139, 92, 246, 0.4)",
+                  boxShadow: "0 0 24px -4px rgba(139, 92, 246, 0.5)",
                 }}
-                whileTap={{ scale: 0.92 }}
+                whileTap={{ scale: 0.9 }}
                 transition={springSnappy}
+                data-cursor="hover"
               >
                 <s.icon size={18} />
               </motion.a>
